@@ -31,7 +31,6 @@ const Home = () => {
     setRefreshing(false);
   };
 
-  console.log("Hello");
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
@@ -39,11 +38,11 @@ const Home = () => {
         keyExtractor={(item) => item?.$id}
         renderItem={({ item }) => (
           <VideoCard
-            title={item.title}
-            thumbnail={item.thumbnail}
-            video={item.video}
-            username={item.users.username}
-            avatar={item.users.avatar}
+            title={item?.title}
+            thumbnail={item?.thumbnail}
+            video={item?.video}
+            username={item.users?.username}
+            avatar={item.users?.avatar}
           />
         )}
         ListHeaderComponent={() => (
