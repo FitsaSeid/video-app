@@ -18,7 +18,6 @@ const GlobalProvider = ({ children }) => {
         if (res) {
           setIsLoggedIn(true);
           setUser(res);
-          console.log("User >>> ", res);
         } else {
           setIsLoggedIn(false);
           setUser(null);

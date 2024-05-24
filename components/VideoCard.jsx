@@ -3,14 +3,7 @@ import React, { useState } from "react";
 import { icons } from "../constants";
 import { ResizeMode, Video } from "expo-av";
 
-const VideoCard = ({
-  video: {
-    title,
-    thumbnail,
-    video,
-    users: { username, avatar },
-  },
-}) => {
+const VideoCard = ({ title, username, avatar, thumbnail, video }) => {
   const [play, setPlay] = useState(false);
 
   return (
@@ -53,6 +46,7 @@ const VideoCard = ({
           resizeMode={ResizeMode.CONTAIN}
           useNativeControls
           shouldPlay
+          onError={(e) => setPlay(false)}
           onPlaybackStatusUpdate={(status) => {
             if (status.didJustFinish) {
               setPlay(false);
@@ -64,12 +58,12 @@ const VideoCard = ({
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => setPlay(true)}
-          className="w-full h-60 rounded-xl my-3 relative justify-center items-center"
+          className="w-full h-60 rounded-xl mt-3 relative flex justify-center items-center"
         >
           <Image
             source={{ uri: thumbnail }}
             className="w-full h-full rounded-xl mt-3"
-            resizeMode="contain"
+            resizeMode="cover"
           />
 
           <Image
